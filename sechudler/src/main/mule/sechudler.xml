@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+	<flow name="sechudlerFlow" doc:id="4d5a0e13-dad9-4ac5-aa12-5e4db4f7ac57" >
+		<scheduler doc:name="Scheduler" doc:id="9aeed0b0-50d1-4bac-b1e0-aca6d8fd6ddf" >
+			<scheduling-strategy >
+				<cron expression="0 0/1 * 1/1 * ? *" timeZone="IST" />
+			</scheduling-strategy>
+		</scheduler>
+		<logger level="INFO" doc:name="Logger" doc:id="3819f449-9ec5-4e4f-a650-2c6883fdef90" message="hi welcome to scheduler"/>
+		<scatter-gather doc:name="Scatter-Gather" doc:id="27675817-2344-4886-8e7e-1fff0bfa02da" >
+			<route >
+				<set-payload value="hi" doc:name="5" doc:id="339532a0-e359-4858-acf2-7c7bd24cdabc" />
+				<logger level="INFO" doc:name="Logger" doc:id="8d9bfe56-ea7f-4cc9-98c2-082262731437" message="#[payload]"/>
+			</route>
+			<route >
+				<set-payload value="hlo" doc:name="10" doc:id="cd98e0f5-af7a-43fa-905b-68eefb225170" />
+				<logger level="INFO" doc:name="Logger" doc:id="9520325e-d8ae-4b23-bafa-11fe5648a544" message="#[payload]" />
+			</route>
+			<route >
+				<set-payload value="howru" doc:name="8" doc:id="8c48a7f1-853d-4045-94d0-5157ab2f528b" />
+				<logger level="INFO" doc:name="Logger" doc:id="3feeed15-757b-49cb-8a15-656aca4d57d7" message="#[payload]" />
+			</route>
+		</scatter-gather>
+	</flow>
+</mule>
